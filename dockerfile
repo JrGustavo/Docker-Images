@@ -6,10 +6,16 @@ FROM node:19.2-alpine3.16
 WORKDIR /app
 
 #Dest /app
-COPY app.js package.json ./
+COPY package.json ./
 
 #Instalar las dependencias
 RUN npm install
+
+#dest /app
+COPY . .
+
+#Realizar testing
+RUN npm run test
 
 #Comando run de la imagen
 CMD ["node", "app.js" ]
