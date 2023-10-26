@@ -1,9 +1,13 @@
-const  cron = require('node-cron');
-const {syncDB} = require("./tasks/sync-db");
 
-console.log('Inicio de la app')
+let times = 0;
 
+const syncDB = () => {
+    times++;
+    console.log('Tick cada multiplo de 5: ', times );
 
+    return times;
+}
 
-cron.schedule('1-59/5 * * * * * *', syncDB);
-
+module.exports = {
+    syncDB
+}
